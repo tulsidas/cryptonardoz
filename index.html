@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>#nardoz crypto</title>
+
+		<meta name="description" content="Introducción a la criptografía">
+		<meta name="author" content="AndresQ">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>#nardoz</h1>
+					<h1>crypto</h1>
+					<p> AndresQ / <a href="http://twitter.com/quixote_arg">@quixote_arg</a> </p>
+				</section>
+
+				<section>
+					<h2>Diferenciemos: </h2>
+					<h3 class="fragment">Criptografía</h3>
+					<h3 class="fragment">Steganografía</h3>
+					<h3 class="fragment">Codificación</h3>
+				</section>
+
+				<section>
+					<h2>Steganografía</h2>
+					<p class="fragment">mensaje <em>oculto</em></p>
+					<p class="fragment">pero, a priori, legible (en texto plano)</p>
+					<p class="fragment"><a href="https://github.com/bramcohen/DissidentX">https://github.com/bramcohen/DissidentX</a></p>
+					<p class="fragment"><img src="img/back-from-hell.jpg" /></p>
+				</section>
+
+				<section>
+					<h2>Codificación</h2>
+					<p class="fragment">mensaje <strong>no</strong> oculto</p>
+					<p class="fragment">mensaje <strong>legible</strong></p>
+					<p class="fragment">contenido (semántica) intercambiado / ininteligible</p>
+					<p class="fragment"> <img src="img/narcosvip.png" /> </p>
+				</section>
+
+				<section>
+					<h2>Criptografía</h2>
+					<p class="fragment">confidencialidad</p>
+					<p class="fragment">integridad</p>
+					<p class="fragment">autenticidad</p>
+				</section>
+
+				<section>
+					<h2>Kerckhoffs principle</h2>
+					<blockquote>
+						A cryptosystem should be secure even if the attacker knows all details about the system, with the exception of the secret key.
+					</blockquote>
+				</section>
+
+				<section>
+					<h1>Historia</h1>
+				</section>
+
+				<section>
+					<h2>Cifrado de César</h2>
+					
+					<p class="fragment">(sin clave)</p>
+
+					<div class="fragment">
+						<pre> A B C D E F G H I J K L M N O P Q R S T U V W X Y Z </pre>
+						<pre> D E F G H I J K L M N O P Q R S T U V W X Y Z A B C </pre>
+					</div>
+
+					<pre class="fragment">LOS NARDOZ SON ESPIAS</pre>
+					<pre class="fragment">ORV QDUGRC VRQ HVSLDV</pre>
+				</section>
+
+				<section>
+					<h2>Cifrado de César genérico</h2>
+					<p class="fragment">clave: N ∈ [1,25]</p>
+					<p class="fragment">por ej: N = 11</p>
+					<div class="fragment">
+						<pre> A B C D E F G H I J K L M N O P Q R S T U V W X Y Z </pre>
+						<pre> L M N O P Q R S T U V W X Y Z A B C D E F G H I J K</pre>
+					</div>
+					<pre class="fragment">LOS NARDOZ SON ESPIAS</pre>
+					<pre class="fragment">WZD YLCOZK DZY PDATLD</pre>
+					<p class="fragment">fuerza bruta: 25 intentos max</p>
+				</section>
+
+				<section>
+					<h2>Sustitución monoalfabética</h2>
+					<p class="fragment">clave: permutación del alfabeto</p>
+					<p class="fragment">tamaño de la clave: 26! = 4×10²⁶</p>
+					<div class="fragment">
+						<pre> A B C D E F G H I J K L M N O P Q R S T U V W X Y Z </pre>
+						<pre> R Q O A F C J T N E M Z U S D K V L Y X P G H W B I</pre>
+					</div>
+					<pre class="fragment">LOS NARDOZ SON ESPIAS</pre>
+					<pre class="fragment">ZDY SRLADI YDS FNKNRY</pre>
+					<p class="fragment">fuerza bruta: imposible</p>
+				</section>
+
+				<section>
+					<h2>Sustitución monoalfabética</h2>
+					<p class="fragment" style="color: red">Clave difícil de acordarse</p>
+					<div class="fragment">
+						<pre> A B C D E F G H I J K L M N O P Q R S T U V W X Y Z </pre>
+						<pre> N A R D O Z U L E S B C F G H I J K M P Q T V W X Y </pre>
+					</div>
+				</section>
+
+				<section>
+					<h2>monoalfabeto &mdash; side attack</h2>
+					<p class="fragment" style="color: red">fuerza bruta: imposible</p>
+					<p class="fragment">~1200 DC: frecuencias de letras (árabes)</p>
+					<p class="fragment">análisis de frecuencias del texto cifrado</p>
+					<p class="fragment"><img src="img/frecuencia.png" height="350" width="546"/></p>
+					<p class="fragment" style="color: red">
+						<small><em>nosotros no somos como los Orozco, yo los conozco son ocho los monos</em></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Sustitución monoalfabética homofónica</h2>
+					<p class="fragment">uniformiza las frecuencias de símbolos</p>
+					<p class="fragment">a: 12% &rarr; 12 símbolos</p>
+					<p class="fragment">b: 2% &rarr; 2 símbolos</p>
+					<p class="fragment">c: 5% &rarr; 2 símbolos</p>
+					<p class="fragment">etc...</p>
+					<p class="fragment">en un texto típico: <strong>igual frecuencia de símbolos</strong></p>
+					<p class="fragment"><strong>pero</strong>: análisis de a pares, tríos, etc</p>
+					<p class="fragment">castellano: Q(1)U(4)</p>
+				</section>
+
+				<section>
+					<h2>Sustitución polialfabética</h2>
+					<p class="fragment"><img src="img/vigenere.gif" height="300"/></p>
+					<pre class="fragment">CRIPTOCRIPTOCRIPTOCRIPTOCRIPTOCRIP</pre>
+					<pre class="fragment">ayayayaycantaynollorescielitolindo</pre>
+					<pre class="fragment">cpintmcpkpghcpvdezqimhvwgcqihzkeld</pre>
+					<p class="fragment">¡chau frecuencias!</p>
+					<p class="fragment"><em>le chiffre indéchiffrable</em></p>
+				</section>
+
+				<section>
+					<h2>Sustitución polialfabética</h2>
+					<p class="fragment">Circa 1750 <em>¡muy complicado!</em></p>
+					<p class="fragment">sustitución monoalfabética seguía siendo lo más usado</p>
+					<p class="fragment">Charles Babbage</p>
+					<p class="fragment"><small>¡el de la máquina analítica!</small></p>
+					<p class="fragment">chau Vigènere</p>
+				</section>
+
+				<section>
+					<p>Clave corta &rarr; se decripta fácil Vigènere</p>
+					<p class="fragment">¿Y si la clave es más larga?</p>
+					<p class="fragment">¿Y si la clave es <strong>más</strong> larga?</p>
+					<p class="fragment">¿Y si la clave es tan larga como el texto?</p>
+				</section>
+
+				<section>
+					<h1>one time pad</h1>
+					<img src="img/HOLY-GRAIL.png" style="background: none; border: none"/>
+				</section>
+
+				<section>
+					<h2>one time pad</h2>
+					<img src="img/one-time-pad2.jpg" />
+					<pre class="fragment">cipher = key + text (mod 26)</pre>
+				</section>
+
+				<section>
+					<h2>one time pad</h2>
+					<p style="color: #80A0C0">texto</p>
+					<pre>TEXTOINDESCIFRABLE</pre>
+					<p style="color: #80A0C0">pad</p>
+					<pre>UMLKLNGLEDFXYOOMQN</pre>
+					<p style="color: #80A0C0">cifrado</p>
+					<pre>NQIDZVTOIVHFDFONBR</pre>
+					<br/>
+					<p class="fragment">random + one time = <em>perfect secrecy</em></p>
+				</section>
+
+				<section>
+					<h2>one time pad</h2>
+					<p>supongamos interceptamos el mensaje cifrado</p>
+					<pre>c = NQIDZVTOIVHFDFONBR</pre>
+					<p class="fragment">18 letras: 26¹⁸ ~ 3*10²⁵ </p>
+					<p class="fragment">indescifrable incluso con poder computacional ilimitado</p>
+					<pre class="fragment">∀ x ∈ {a,z}<sup>n</sup> ∃ pad <em>k</em> ∈ {a,z}<sup>n</sup> / k ⊕ c = x </pre>
+					<p class="fragment">o sea: puedo descifrar <em>cualquier</em> texto</p>
+					<p class="fragment">one time pad <em>no agrega información</em> (más allá de tamaño máximo)</p>
+				</section>
+
+				<section>
+					<h1>FIN</h1>
+				</section>
+
+				<section>
+					<h1>¬FIN :(</h1>
+				</section>
+
+				<section>
+					<h2>Stream ciphers</h2>
+					<p>
+						Dada clave corta <code>k</code>, generar <strong>pseudorandom keystream</strong> (infinito) <code>ks</code>
+						y luego hacer símil one-time-pad: <code>ks ⊕ m</code>
+					</p>
+					<p class="fragment">como <code>ks</code> es <em>pseudoaleatorio</em>, no hay perfect secrecy</p>
+					<p class="fragment">útiles para encriptar streams, o contenido del que no se sabe el tamaño de antemano</p>
+				</section>
+
+				<section>
+					<h2>Stream ciphers (viejos, no usar)</h2>
+					<p>RC4</p>
+					<p>CSS (DVD), crackeable en 2¹⁷</p>
+					<p>A5/1,2 (GSM)</p>
+					<p>E0 (bluetooth)</p>
+				</section>
+
+				<section>
+					<h2>Stream ciphers actuales:</h2>
+					<p>eStream (familia)</p>
+					<p>Salsa20</p>
+					<p>SOSEMANUK</p>
+				</section>
+
+				<section>
+					<h2>Block ciphers</h2>
+					<p>encriptan de a bloques</p>
+					<p>se usan en todos lados</p>
+					<div class="fragment">
+						<pre>E(k, m): {0,1}<sup>k</sup> × {0,1}<sup>n</sup> → {0,1}<sup>n</sup></pre>
+						<pre>D(k, c): {0,1}<sup>k</sup> × {0,1}<sup>n</sup> → {0,1}<sup>n</sup></pre>
+						<pre>∀ k: D(k, E(k, m)) = m</pre>
+					</div>
+				</section>
+
+				<section>
+					<h2>Block ciphers viejos (no usar):</h2>
+					<p>Lucifer / DES / data encryption standard &rarr; <code>k = 56 bit</code></p>
+					<p>3DES E<sub>k<sub>1</sub></sub>(E<sub>k<sub>2</sub></sub>(E<sub>k<sub>3</sub></sub>(m))) &rarr; <code>k = 112bit</code></p>
+				</section>
+
+				<section>
+					<h2>Block ciphers actuales:</h2>
+					<p>Rijndael (AES) &rarr; <code>b=128, k=128/192/256</code></p>
+					<p>RC6 &rarr; <code>b=128, k=128/192/256</code></p>
+					<p>Blowfish &rarr; <code>b=128, k=128/192/256</code></p>
+				</section>
+
+				<section>
+					<h2>AES</h2>
+					<img src="img/aes.png" />
+				</section>
+
+				<section>
+					<h2>Block ciphers:</h2>
+					<p>Modus operandi</p>
+					<ul>
+						<li class="fragment">electronic codebook<code>(ECB)</code></li>
+						<li class="fragment">cipher block chaining<code>(CBC)</code></li>
+						<li class="fragment">output feedback<code>(OFB)</code></li>
+						<li class="fragment">cipher feedback<code>(CFB)</code></li>
+						<li class="fragment">counter<code>(CTR)</code></li>
+						<li class="fragment">Galois counter<code>(GCM)</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2><code>ECB</code></h2>
+					<img src="img/ECB.png" style="background-color: white"/>
+				</section>
+
+				<section>
+					<h2><code>ECB</code></h2>
+					<img src="img/Tux.jpg" class="fragment" />
+					<img src="img/Tux_ecb.jpg" class="fragment" />
+					<img src="img/Tux_secure.jpg" class="fragment" />
+				</section>
+
+				<section>
+					<h2><code>CBC</code></h2>
+					<img src="img/CBC.png" style="background-color: white"/>
+				</section>
+
+				<section>
+					<h2><code>CFB</code></h2>
+					<img src="img/CFB.png" style="background-color: white"/>
+				</section>
+
+				<section>
+					<h2><code>CTR</code></h2>
+					<img src="img/CTR.png" style="background-color: white"/>
+				</section>
+
+				<section>
+					<h2>distribución de claves = quilombo</h2>
+				</section>
+
+				<section>
+					<h2>Diffie-Hellman</h2>
+					<p><em>asumamos <code>+</code> es fácil, <code>-</code> es imposible</em></p>
+					<p class="fragment"><code>n=49</code> (de público conocimiento)</p>
+					<pre class="fragment">Alice               Eve              Bob   </pre>
+					<pre class="fragment"> s=17                                t=23  </pre>
+					<pre class="fragment"> n+s=66                             n+t=72 </pre>
+					<pre class="fragment">      &rarr; n+s               &larr; n+t  </pre>
+					<pre class="fragment"> (n+t)+s=89                    (n+s)+t=89  </pre>
+					<pre class="fragment">                (n+s) (n+t)                </pre>
+					<pre class="fragment">               (n+s+t) = ???               </pre>
+					<p class="fragment">¡victoria!</p>
+				</section>
+
+				<section>
+					<h2>Diffie-Hellman</h2>
+					<pre class="fragment">&alpha;, p conocidos</pre>
+					<pre class="fragment">Alice               Eve              Bob   </pre>
+					<pre class="fragment">a∈{1..p-1}                      b∈{1..p-1} </pre>
+					<pre class="fragment">A=&alpha;<sup>a</sup> mod p                      B=&alpha;<sup>b</sup> mod p</pre>
+					<pre class="fragment">           A &rarr;            &larr; B              </pre>
+					<pre class="fragment">k=B<sup>a</sup>=(&alpha;<sup>a</sup>)<sup>b</sup> = &alpha;<sup>ab</sup>                              </pre>
+					<pre class="fragment">                               k=A<sup>b</sup>=(&alpha;<sup>b</sup>)<sup>a</sup> = &alpha;<sup>ab</sup></pre>
+					<pre class="fragment">               ???               </pre>
+				</section>
+
+				<section>
+					<h2>public key criptography</h2>
+					<p class="fragment"><code>(
+						<span style="color: green">
+							k<sub>pub</sub>
+						</span>,
+						<span style="color: red">
+							k<sub>pr</sub>
+						</span>
+						)</code></p>
+					<p class="fragment"><em>trapdoor functions</em></p>
+					<p class="fragment"><code>n = p&middot;q</code></p>
+					<p class="fragment"><code>¿p? ¿q?</code></p>
+					<p class="fragment">dado <code>p</code>, <code>q</code> trivial</p>
+				</section>
+
+				<section>
+					<h2>public key criptography</h2>
+					<p class="fragment">key exchange fácil</p>
+					<p class="fragment">firma digital (de <code>m</code> o <code>h(m)</code>)</p>
+					<p class="fragment">non-repudiation</p>
+					<p class="fragment">~1000 veces más lentos que simétricos</p>
+					<p class="fragment">sistemas híbridos: RSA para key exchange, AES para resto</p>
+					<p class="fragment">se basan en problemas <code>NP-C</code></p>
+					<p class="fragment">factorización de enteros, logaritmo discreto, curva elíptica</p>
+					<p class="fragment"><code>P=NP</code>, computadoras quánticas</p>
+				</section>
+
+				<section>
+					<h2>public key criptography</h2>
+					<img src="img/pk-keys.png" />
+				</section>
+
+				<section>
+					<h2><code>RSA</code></h2>
+					<img src="img/rsa.png" />
+				</section>
+
+				<section>
+					<h2><code>https</code></h2>
+					<h3><code>SSL/TLS</code></h3>
+					<img src="img/tls.png" />
+					<p>AES_128_GCM = AES, k=128 bits, galois counter mode</p>
+					<p>ECDHE_RSA = elliptic curve diffie-hellman exchange, RSA</p>
+				</section>
+
+				<section>
+					<h2>integridad</h2>
+					<p class="fragment">(cryptografic) hash functions</p>
+					<p class="fragment"><code>H: {0,1}<sup>n</sup> &rarr; {0,1}<sup>m</sup> (n>>m)</code></p>
+					<p class="fragment">preimage resistance: hallar <code>x' / h(x') = y ∀y</code></p>
+					<p class="fragment">2nd-preimage resistance: dado <code>x</code> hallar <code>x' != x / h(x) = h(x')</code></p>
+					<p class="fragment">collision resistance: hallar <code>x, x' / h(x) = h(x')</code></p>
+				</section>
+
+				<section>
+					<h2>cryptografic hash functions</h2>
+					<p class="fragment">MD5</p>
+					<p class="fragment">SHA (1/224/256/384/512)</p>
+					<p class="fragment">whirpool <small><a href="http://www.larc.usp.br/~pbarreto/WhirlpoolPage.html">http://www.larc.usp.br/~pbarreto/WhirlpoolPage.html</a></small></p>
+				</section>
+
+				<section>
+					<h2>Message Authentication Code (MAC)</h2>
+					<p class="fragment"><em>keyed</em> (cryptographic) hash function</p>
+					<p class="fragment">confidentiality + integrity: <strong>authenticated encryption</strong></p>
+					<p class="fragment">H(k || m)</p>
+					<p class="fragment">¡inseguro! <a href="http://en.wikipedia.org/wiki/Length_extension_attack">Length Extension Attack</a></p>
+				</section>
+
+				<section>
+					<h2>HMAC</h2>
+					<p class="fragment">basado en hash function</p>
+					<p class="fragment">S(k, m) = H(k ⊕ opad, H(k ⊕ ipad || m))</p>					
+					<img class="fragment" src="img/hmac.jpg" height="500" />
+				</section>
+
+				<section>
+					<h2>OMAC, CBC-MAC, PMAC</h2>
+					<p class="fragment">basados en block ciphers</p>
+				</section>
+
+				<section>
+					<h2>Authenticated encryption</h2>
+					<div class="fragment">
+						<p>mac-then-encrypt</p>
+						<p>E(m || mac(m))</p>
+						<p class="fragment" style="color: orange;">puede fallar</p>
+						<hr/>
+					</div>
+					<div class="fragment">
+						<p>encrypt-them-mac</p>
+						<p>E(m) || mac(C))</p>
+						<p class="fragment" style="color: green;">siempre correcto</p>
+						<hr/>
+					</div>
+					<div class="fragment">
+						<p>encrypt-them-mac</p>
+						<p>E(m) || mac(m)</p>
+						<p class="fragment" style="color: red;">feo</p>
+					</div>
+				</section>
+
+				<section>
+					<h2>Caso práctico</h2>
+					<p>guardar passwords en la DB</p>
+				</section>
+
+				<section>
+					<p><strong>hay que asumir el hacker (o topo) tiene acceso a <em>TODO</em></strong></p>
+					<p>db, código, filesystem, ...</p>
+				</section>
+
+				<section>
+					<p>
+						ROT-26
+						<span class="fragment" style="color: red;">horrible</span>
+					</p>
+					<p class="fragment">
+						encriptado con algun simétrico
+						<span class="fragment" style="color: red;">no suma</span>
+					</p>
+					<p class="fragment">
+						encriptado con algun asimétrico
+						<span class="fragment" style="color: red;">no suma</span>
+					</p>
+					<p class="fragment">
+						hasheado con MD5/SHA
+						<span class="fragment" style="color: red;">fácil con rainbow tables</span>
+					</p>
+					<p class="fragment">
+						hash + salt único
+						<span class="fragment" style="color: red;">fácil con CPU</span>
+					</p>
+					<p class="fragment">
+						hash + salt por registro
+						<span class="fragment" style="color: orange;">difícil, con CPU</span>
+					</p>
+					<p class="fragment">
+						multihash + salt por registro
+						<span class="fragment" style="color: green;">muy difícil</span>
+					</p>
+					<p class="fragment">
+						bcrypt, scrypt
+						<span class="fragment" style="color: green;">muy difícil</span>
+					</p>
+				</section>
+
+				<section>
+					<h2>en el tintero</h2>
+					<p>quantum crypto</p>
+					<p>merkel puzzles</p>
+					<p>OTP (time, counter)</p>
+					<p>MiTM (CA)</p>
+				</section>
+
+				<section>
+					<h2>biblio</h2>
+					<p><code>The Code Book</code> (S. Singh)</p>
+					<p><code>The Codebreakers</code> (D. Kahn)</p>
+					<p><code>Cryptography (coursera)</code></p>
+					<p><code>Understanding Cryptography (www.crypto-textbook.com)</code></p>
+					<p><code>Handbook of Applied Cryptography (www.cacr.math.uwaterloo.ca/hac)</code></p>
+				</section>
+
+				<section>
+					<h1>FIN</h1>
+					<h2>¿?</h2>
+					<p> AndresQ / <a href="http://twitter.com/quixote_arg">@quixote_arg</a> </p>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: false,
+				history: true,
+				center: true,
+
+				theme: "night",
+				transition: "linear"
+			});
+
+		</script>
+
+	</body>
+</html>
